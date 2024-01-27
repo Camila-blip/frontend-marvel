@@ -5,6 +5,10 @@ const GlobalStyle = createGlobalStyle`
 
     html {
         height: 100%;
+        box-sizing: border-box;
+    }
+    *, *:before, *:after {
+        box-sizing: inherit;
     }
 
     body {
