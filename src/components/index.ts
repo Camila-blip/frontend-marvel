@@ -1,2 +1,4 @@
 export { default as Wrapper } from "./LoginRegistro/Wrapper";
-export { default as Title } from "./LoginRegistro/Title";
+export { MainTitle } from "./LoginRegistro/Title";
+export { InputMain } from "./Input";
+export { default as HelperText } from "./HelperText";

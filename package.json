@@ -12,13 +12,19 @@
         "test": "react-scripts test"
     },
     "dependencies": {
+        "@fontsource-variable/epilogue": "^5.0.9",
+        "@fontsource-variable/inter": "^5.0.16",
+        "@hookform/resolvers": "^3.3.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-hook-form": "^7.49.3",
+        "react-icons": "^5.0.1",
         "react-router-dom": "^6.21.3",
         "react-scripts": "5.0.1",
         "serve": "^14.2.0",
         "styled-components": "^6.1.8",
-        "web-vitals": "^2.1.4"
+        "web-vitals": "^2.1.4",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@babel/core": "^7.23.7",

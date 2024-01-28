@@ -6,18 +6,17 @@ import PredioLogin from "assets/images/PredioLogin.png";
 export default function Wrapper({ children }: ChildrenType) {
     return (
         <S.Wrapper>
-            <S.Container>
-                <div>
-                    <S.LogoPontua>
-                        <LogoPontua />
-                    </S.LogoPontua>
-
+            <S.Flex>
+                <S.LogoPontua>
+                    <LogoPontua />
+                </S.LogoPontua>
+                <S.Container>
                     <div>
                         <S.PredioLogin src={PredioLogin} alt="" />
                     </div>
-                </div>
-                <div>{children}</div>
-            </S.Container>
+                    <S.Content>{children}</S.Content>
+                </S.Container>
+            </S.Flex>
         </S.Wrapper>
     );
 }

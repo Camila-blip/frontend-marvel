@@ -13,8 +13,21 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
     display: grid;
     grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 3em;
 `;
 export const LogoPontua = styled.div``;
-export const PredioLogin = styled.img`
-    max-width: 614px;
+export const PredioLogin = styled.img``;
+
+export const Content = styled.div`
+    background-color: ${(props) => props.theme.white};
+    width: 380px;
+    height: 433px;
+    border-radius: 28px;
+    padding: 1em 2em;
+`;
+export const Flex = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 `;

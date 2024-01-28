@@ -6,10 +6,10 @@ import Register from "pages/register";
 
 // import ConfirmMail from "pages/confirmemail";
 // import NotFound from "pages/notfound";
-
 import Home from "pages/home";
+import { ReactElement } from "react";
 
-export default function MainRoutes() {
+export default function MainRoutes(): ReactElement {
     return (
         <Router>
             <Routes>

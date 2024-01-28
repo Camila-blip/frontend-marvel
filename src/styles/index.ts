@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
+import "@fontsource-variable/epilogue";
+import "@fontsource-variable/inter";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
     html {
         height: 100%;
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color:  ${(props) => props.theme.grayBackground};
         margin: 0;
-        font-family: 'Epilogue', Inter;
+        font-family: 'Epilogue Variable', Inter Variable, sans-serif;
         font-size: 100%;
         font-weight: 400;
         line-height: 1.5;

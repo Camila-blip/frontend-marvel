@@ -1,12 +1,7 @@
-import { ReactNode } from "react";
+import Title from "./Title";
+import SubTitle from "./SubTitle";
 
-type TitleType = {
-    name: string;
+export const MainTitle = {
+    Title: Title,
+    SubTitle: SubTitle,
 };
-export default function Title({ name }: TitleType): ReactNode {
-    return (
-        <div>
-            <h1>{name}</h1>
-        </div>
-    );
-}
