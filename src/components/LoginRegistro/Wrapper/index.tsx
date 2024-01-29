@@ -11,9 +11,8 @@ export default function Wrapper({ children }: ChildrenType) {
                     <LogoPontua />
                 </S.LogoPontua>
                 <S.Container>
-                    <div>
-                        <S.PredioLogin src={PredioLogin} alt="" />
-                    </div>
+                    <S.PredioLogin src={PredioLogin} alt="" />
+
                     <S.Content>{children}</S.Content>
                 </S.Container>
             </S.Flex>

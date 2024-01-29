@@ -1,39 +1,44 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
-    flex-direction: column;
     width: 100%;
     grid-gap: 5px;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #b7b7b7;
+    border-radius: 10px;
+    position: relative;
+    &:focus-within {
+        border: 1px solid #293d71;
+        svg {
+            color: #293d71 !important;
+        }
+    }
 `;
 
 export const HelperText = styled.div`
-    color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.secondaryDarkOrange};
     font-size: 0.8rem;
     display: flex;
     align-items: center;
+    position: absolute;
+    bottom: -1.8em;
+    left: 0;
 `;
 
-export const Input = styled.input<{ hasError?: boolean }>`
-    border: 1px solid #b7b7b7;
-    border-radius: 10px;
-    outline: none;
+export const Input = styled.input`
     padding: 12px 8px;
     font-size: 1rem;
     height: 57px;
     font-weight: 700;
     color: #293d71;
-    &:focus {
-        border: 1px solid #293d71;
-    }
-    ${({ hasError }) =>
-        hasError &&
-        css`
-            border-color: ${(props) => props.theme.red};
-        `}
+    border: none;
+    outline: none;
+    background: transparent;
 `;
 
-export const Select = styled.select<{ hasError?: boolean }>`
+export const Select = styled.select`
     border: 1px solid ${(props) => props.theme.primaryColorLight};
     border-radius: 4px;
     outline: none;
@@ -42,40 +47,11 @@ export const Select = styled.select<{ hasError?: boolean }>`
     &:focus {
         border: 1px solid ${(props) => props.theme.primaryColor};
     }
-    ${({ hasError }) =>
-        hasError &&
-        css`
-            border-color: ${(props) => props.theme.red};
-        `}
 `;
 
-export const Svg = styled.div`
-    background-color: ${(props) => props.theme.white};
-`;
-
-export const StyledFileInputContainer = styled.div`
-    display: inline-block;
-    position: relative;
-    width: 100%;
-`;
-
-export const StyledFileInput = styled.input`
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    height: 10em;
-    width: 100%;
-    cursor: pointer;
-`;
-
-export const StyledButton = styled.button`
-    border: dashed 2px ${(props) => props.theme.primaryColor};
-    border-radius: 10px;
-    color: black;
-    padding: 8px 16px;
-    cursor: pointer;
-    height: 10em;
-    width: 100%;
-    box-shadow: 0px 1px 10px 0px ${(props) => props.theme.primaryColor};
+export const SVG = styled.div`
+    display: flex;
+    svg {
+        color: #293d71;
+    }
 `;
