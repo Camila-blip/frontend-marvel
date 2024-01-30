@@ -29,14 +29,14 @@ export const PredioLogin = styled.img`
 
 export const Content = styled.div`
     background-color: ${(props) => props.theme.white};
-    height: 433px;
+    height: 440px;
     border-radius: 28px;
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
     @media (min-width: 1100px) {
-        width: 380px;
+        width: 400px;
     }
     @media (max-width: 1100px) {
         max-width: 380px;

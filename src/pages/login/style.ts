@@ -12,7 +12,7 @@ export const Span = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 0.6em;
+    font-size: 0.7em;
     span {
         display: flex;
         align-items: center;
@@ -25,13 +25,9 @@ export const Span = styled.div`
 `;
 
 export const Form = styled.form`
-    /* width: 50%; */
     display: flex;
     flex-direction: column;
     grid-gap: 20px;
-    /* @media (max-width: 850px) {
-        width: 70%;
-    } */
 `;
 
 export const Padding = styled.div`

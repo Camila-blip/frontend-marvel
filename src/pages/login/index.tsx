@@ -8,8 +8,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { BiAt } from "react-icons/bi";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { LoginAlt, ForgotPassword } from "assets/icons";
+import { useNavigate } from "react-router";
 
 export default function Login(): ReactElement {
+    const router = useNavigate();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const {
         register,
@@ -76,7 +78,7 @@ export default function Login(): ReactElement {
                     <Button text="entrar">
                         <LoginAlt />
                     </Button>
-                    <S.Span>
+                    <S.Span onClick={() => router("/recoverPassword")}>
                         <span>
                             {" "}
                             <ForgotPassword /> Esqueceu a senha?

@@ -1,8 +1,16 @@
 import styled from "styled-components";
-export const Button = styled.button`
+
+type ButtonType = {
+    color?: string;
+    margin?: string;
+};
+
+export const Button = styled.button<ButtonType>`
+    margin-top: ${(props) => props.margin && props.margin};
     border-radius: 10px;
     display: flex;
-    background-color: ${(props) => props.theme.primaryBlue};
+    background-color: ${(props) =>
+        props.color ? props.color : props.theme.primaryBlue};
     width: 100%;
     height: 57px;
     align-items: center;

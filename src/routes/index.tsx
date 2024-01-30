@@ -3,11 +3,10 @@ import Login from "pages/login";
 import Layout from "components/layout";
 import PrivateRoute from "./PrivateRoute";
 import Register from "pages/register";
-
-// import ConfirmMail from "pages/confirmemail";
-// import NotFound from "pages/notfound";
 import Home from "pages/home";
 import { ReactElement } from "react";
+import RecoverPassword from "pages/recoverPassword";
+import SuccessRecoverPassword from "pages/successRecoverPassword";
 
 export default function MainRoutes(): ReactElement {
     return (
@@ -18,11 +17,10 @@ export default function MainRoutes(): ReactElement {
                     <Route path="/home" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    {/* <Route
-                        path="/confirm-email/:token"
-                        element={<ConfirmMail />}
-                    /> */}
-
+                    <Route
+                        path="recoverPassword"
+                        element={<RecoverPassword />}
+                    />
                     <Route
                         path="/home"
                         element={
@@ -31,7 +29,12 @@ export default function MainRoutes(): ReactElement {
                             </PrivateRoute>
                         }
                     />
+                    <Route
+                        path="successRecoverPassword"
+                        element={<SuccessRecoverPassword />}
+                    />
                 </Route>
+
                 {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
         </Router>

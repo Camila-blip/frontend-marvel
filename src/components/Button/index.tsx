@@ -1,14 +1,23 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import * as S from "./style";
 
-type ButtonType = {
+type ButtonType = ButtonHTMLAttributes<HTMLButtonElement> & {
     text: string;
-    children: ReactNode;
+    children?: ReactNode;
+    color?: string;
+    margin?: string;
 };
-export default function Button({ text, children }: ButtonType) {
+
+export default function Button({
+    text,
+    children,
+    color,
+    margin,
+    ...props
+}: ButtonType) {
     return (
         <div>
-            <S.Button type="submit">
+            <S.Button color={color} margin={margin} {...props}>
                 {text}
                 {children}
             </S.Button>
