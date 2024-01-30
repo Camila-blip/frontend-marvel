@@ -7,6 +7,7 @@ import Home from "pages/home";
 import { ReactElement } from "react";
 import RecoverPassword from "pages/recoverPassword";
 import SuccessRecoverPassword from "pages/successRecoverPassword";
+import SelectAgent from "pages/selectAgent";
 
 export default function MainRoutes(): ReactElement {
     return (
@@ -21,6 +22,7 @@ export default function MainRoutes(): ReactElement {
                         path="recoverPassword"
                         element={<RecoverPassword />}
                     />
+                    <Route path="selectAgent" element={<SelectAgent />} />
                     <Route
                         path="/home"
                         element={

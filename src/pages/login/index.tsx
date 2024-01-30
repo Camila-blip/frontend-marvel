@@ -24,6 +24,7 @@ export default function Login(): ReactElement {
 
     const submitForm = async (data: any) => {
         console.log(data);
+        router("/selectAgent");
     };
     return (
         <Wrapper>
