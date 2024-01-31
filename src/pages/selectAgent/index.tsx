@@ -5,8 +5,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DataProps } from "types";
 import { SelectAgentSchema } from "schemas";
+import { useContext, useEffect, useState } from "react";
+import { MarvelContent } from "contexts/Marvel.context";
 
 export default function SelectAgent() {
+    const { GetSelectAgentMarvel } = useContext(MarvelContent);
+    const [dataAgents, setDataAgents] = useState<[]>([]);
+    useEffect(() => {
+        (async () => {
+            const { results } = await GetSelectAgentMarvel();
+            setDataAgents(results);
+            console.log("result", results);
+        })();
+    }, []);
+
     const router = useNavigate();
     const {
         register,
@@ -30,7 +42,12 @@ export default function SelectAgent() {
             <S.Form onSubmit={handleSubmit(submitForm)}>
                 <S.Padding>
                     <InputMain.Container>
-                        <InputMain.Select></InputMain.Select>
+                        {dataAgents &&
+                            dataAgents.map((item: any) => (
+                                <InputMain.Select key={item?.id}>
+                                    {item?.name}
+                                </InputMain.Select>
+                            ))}
                     </InputMain.Container>
                 </S.Padding>
             </S.Form>
