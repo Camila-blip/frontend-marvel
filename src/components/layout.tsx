@@ -1,11 +1,11 @@
-// import { Header, Footer } from "components";
+import { Sidebar } from "components";
 import { Outlet } from "react-router-dom";
 import * as S from "./style";
 
 export default function Layout() {
     return (
         <S.Wrapper>
-            {/* <Header /> */}
+            <Sidebar />
             <Outlet />
         </S.Wrapper>
     );

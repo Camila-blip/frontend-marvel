@@ -42,12 +42,16 @@ export default function SelectAgent() {
             <S.Form onSubmit={handleSubmit(submitForm)}>
                 <S.Padding>
                     <InputMain.Container>
-                        {dataAgents &&
-                            dataAgents.map((item: any) => (
-                                <InputMain.Select key={item?.id}>
-                                    {item?.name}
-                                </InputMain.Select>
-                            ))}
+                        <InputMain.Select>
+                            <option value="">Selecione um agente</option>
+                            {dataAgents &&
+                                dataAgents.map((item: any) => (
+                                    <option key={item?.id}>
+                                        {" "}
+                                        {item?.name}
+                                    </option>
+                                ))}
+                        </InputMain.Select>
                     </InputMain.Container>
                 </S.Padding>
             </S.Form>

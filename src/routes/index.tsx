@@ -23,14 +23,16 @@ export default function MainRoutes(): ReactElement {
                         element={<RecoverPassword />}
                     />
                     <Route path="selectAgent" element={<SelectAgent />} />
-                    <Route
+                    <Route path="home" element={<Home />} />
+
+                    {/* <Route
                         path="/home"
                         element={
                             <PrivateRoute>
                                 <Home />
                             </PrivateRoute>
                         }
-                    />
+                    /> */}
                     <Route
                         path="successRecoverPassword"
                         element={<SuccessRecoverPassword />}
