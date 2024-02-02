@@ -8,15 +8,16 @@ import { ReactElement } from "react";
 import RecoverPassword from "pages/recoverPassword";
 import SuccessRecoverPassword from "pages/successRecoverPassword";
 import SelectAgent from "pages/selectAgent";
+import Profile from "pages/profile";
 
 export default function MainRoutes(): ReactElement {
     return (
         <Router>
             <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Login />} />
                 <Route element={<Layout />}>
-                    <Route path="/" element={<Login />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route
                         path="recoverPassword"
@@ -24,6 +25,7 @@ export default function MainRoutes(): ReactElement {
                     />
                     <Route path="selectAgent" element={<SelectAgent />} />
                     <Route path="home" element={<Home />} />
+                    <Route path="profile" element={<Profile />} />
 
                     {/* <Route
                         path="/home"

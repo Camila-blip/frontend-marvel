@@ -10,6 +10,7 @@ export const Aside = styled.aside`
 
 export const Logo = styled.div`
     padding: ${padding} ${padding} 10px ${padding};
+    height: 60px;
 `;
 export const Content = styled.div`
     border-top: 1px solid #ebeff2;

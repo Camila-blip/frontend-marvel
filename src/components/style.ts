@@ -5,3 +5,8 @@ export const Wrapper = styled.main`
     flex-direction: row;
     height: 100vh;
 `;
+export const ContainerOutlet = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;

@@ -6,7 +6,9 @@ export default function Layout() {
     return (
         <S.Wrapper>
             <Sidebar />
-            <Outlet />
+            <S.ContainerOutlet>
+                <Outlet />
+            </S.ContainerOutlet>
         </S.Wrapper>
     );
 }

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color:  ${(props) => props.theme.grayBackground};
+        background-color:  ${(props) => props.theme.white};
         margin: 0;
         font-family: 'Epilogue Variable', Inter Variable, sans-serif;
         font-size: 100%;
@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1.5;
         color: ${(props) => props.theme.black};
         height: 100%;
+
+
     }
 
     #root {
