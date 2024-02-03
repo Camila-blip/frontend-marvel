@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "pages/login";
 import Layout from "components/layout";
 import PrivateRoute from "./PrivateRoute";
-import Register from "pages/register";
 import Home from "pages/home";
 import { ReactElement } from "react";
 import RecoverPassword from "pages/recoverPassword";
@@ -16,14 +15,15 @@ export default function MainRoutes(): ReactElement {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/" element={<Login />} />
+                <Route path="recoverPassword" element={<RecoverPassword />} />
+                <Route
+                    path="successRecoverPassword"
+                    element={<SuccessRecoverPassword />}
+                />
+                <Route path="selectAgent" element={<SelectAgent />} />
                 <Route element={<Layout />}>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route
-                        path="recoverPassword"
-                        element={<RecoverPassword />}
-                    />
-                    <Route path="selectAgent" element={<SelectAgent />} />
+
                     <Route path="home" element={<Home />} />
                     <Route path="profile" element={<Profile />} />
 
@@ -35,10 +35,6 @@ export default function MainRoutes(): ReactElement {
                             </PrivateRoute>
                         }
                     /> */}
-                    <Route
-                        path="successRecoverPassword"
-                        element={<SuccessRecoverPassword />}
-                    />
                 </Route>
 
                 {/* <Route path="*" element={<NotFound />} /> */}

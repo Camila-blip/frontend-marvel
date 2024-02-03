@@ -6,6 +6,7 @@ type ButtonType = ButtonHTMLAttributes<HTMLButtonElement> & {
     children?: ReactNode;
     color?: string;
     margin?: string;
+    height?: string;
 };
 
 export default function Button({
@@ -13,14 +14,13 @@ export default function Button({
     children,
     color,
     margin,
+    height,
     ...props
 }: ButtonType) {
     return (
-        <div>
-            <S.Button color={color} margin={margin} {...props}>
-                {text}
-                {children}
-            </S.Button>
-        </div>
+        <S.Button height={height} color={color} margin={margin} {...props}>
+            {text}
+            {children}
+        </S.Button>
     );
 }

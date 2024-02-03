@@ -9,6 +9,7 @@ import { BiAt } from "react-icons/bi";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { LoginAlt, ForgotPassword } from "assets/icons";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export default function Login(): ReactElement {
     const router = useNavigate();
@@ -17,14 +18,23 @@ export default function Login(): ReactElement {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm<DataProps<typeof LoginSchema>>({
         mode: "onBlur",
         resolver: zodResolver(LoginSchema),
     });
 
     const submitForm = async (data: any) => {
-        console.log(data);
-        router("/selectAgent");
+        const { email, password } = data;
+        const emailCompare = "douglas@pontua.com.br";
+        const passwordCompare = "Pontua@2024";
+
+        if (email === emailCompare && password === passwordCompare) {
+            router("/selectAgent");
+        } else {
+            toast.error("E-mail ou senha incorretos.");
+            reset();
+        }
     };
     return (
         <Wrapper>

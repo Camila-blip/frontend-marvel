@@ -3,6 +3,7 @@ import styled from "styled-components";
 type ButtonType = {
     color?: string;
     margin?: string;
+    height?: string;
 };
 
 export const Button = styled.button<ButtonType>`
@@ -12,13 +13,13 @@ export const Button = styled.button<ButtonType>`
     background-color: ${(props) =>
         props.color ? props.color : props.theme.primaryBlue};
     width: 100%;
-    height: 57px;
+    height: ${(props) => (props.height ? props.height : "57px")};
     align-items: center;
     justify-content: center;
     gap: 0.5em;
     border: none;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: ${(props) => (props.height ? "1rem" : "1.5rem")};
     color: ${(props) => props.theme.white};
     &:hover {
         cursor: pointer;

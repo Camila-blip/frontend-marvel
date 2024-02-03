@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { DataProps } from "types";
 import * as S from "./style";
 import { RecoverPasswordSchema } from "schemas";
+import { toast } from "react-toastify";
 
 export default function RecoverPassword() {
     const router = useNavigate();
@@ -18,9 +19,11 @@ export default function RecoverPassword() {
         resolver: zodResolver(RecoverPasswordSchema),
     });
 
-    const submitForm = async (data: any) => {
-        console.log(data);
-        router("/successRecoverPassword");
+    const submitForm = async () => {
+        toast.success("Enviado com sucesso!");
+        setTimeout(() => {
+            router("/successRecoverPassword");
+        }, 2000);
     };
     return (
         <Wrapper>

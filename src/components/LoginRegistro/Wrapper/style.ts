@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+type WrapperType = {
+    height?: string;
+};
 export const Wrapper = styled.div`
     height: 100vh;
     width: 100%;
@@ -27,9 +29,9 @@ export const PredioLogin = styled.img`
     }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<WrapperType>`
     background-color: ${(props) => props.theme.white};
-    height: 440px;
+    height: ${(props) => (props.height ? props.height : "440px")};
     border-radius: 28px;
     padding: 1em 2em;
     display: flex;

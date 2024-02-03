@@ -1,9 +1,14 @@
-import { ChildrenType } from "types";
 import * as S from "./style";
 import { LogoPontua } from "assets/icons";
 import PredioLogin from "assets/images/PredioLogin.png";
+import { ReactNode } from "react";
 
-export default function Wrapper({ children }: ChildrenType) {
+type WrapperType = {
+    children: ReactNode;
+    height?: string;
+};
+
+export default function Wrapper({ children, height }: WrapperType) {
     return (
         <S.Wrapper>
             <S.Flex>
@@ -13,7 +18,7 @@ export default function Wrapper({ children }: ChildrenType) {
                 <S.Container>
                     <S.PredioLogin src={PredioLogin} alt="" />
 
-                    <S.Content>{children}</S.Content>
+                    <S.Content height={height}>{children}</S.Content>
                 </S.Container>
             </S.Flex>
         </S.Wrapper>
