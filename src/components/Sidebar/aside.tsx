@@ -5,9 +5,11 @@ export const ListaAside: Array<SidebarType> = [
     {
         title: "Home",
         icon: <Home />,
+        url: "/home",
     },
     {
         title: "Perfil",
         icon: <Profile />,
+        url: "/profile",
     },
 ];

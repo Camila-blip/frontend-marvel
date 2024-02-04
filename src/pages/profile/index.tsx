@@ -39,8 +39,8 @@ export default function Profile() {
                     <Overview
                         name={perfilSelected?.name}
                         description={perfilSelected?.description}
-                        urlImg={perfilSelected?.thumbnail.path}
-                        extension={perfilSelected?.thumbnail.extension}
+                        urlImg={perfilSelected?.thumbnail?.path}
+                        extension={perfilSelected?.thumbnail?.extension}
                     />
                 ) : (
                     <InfoPanel />

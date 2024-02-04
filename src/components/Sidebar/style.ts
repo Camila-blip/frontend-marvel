@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const padding = "20px";
 export const Aside = styled.aside`
@@ -27,19 +27,30 @@ export const Content = styled.div`
         &:hover {
             cursor: pointer;
         }
-        li {
-            display: flex;
-            gap: 1em;
-            align-items: center;
-            font-size: 0.9rem;
-            font-weight: 500;
-            &:hover {
-                color: ${(props) => props.theme.secondaryDarkOrange};
-                svg {
-                    path {
-                        stroke: ${(props) => props.theme.secondaryDarkOrange};
-                    }
+    }
+`;
+
+export const ListHeader = styled.li<{ active?: boolean }>`
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    ${({ active }) =>
+        active &&
+        css`
+            color: ${(props) => props.theme.secondaryDarkOrange};
+            svg {
+                path {
+                    stroke: ${(props) => props.theme.secondaryDarkOrange};
                 }
+            }
+        `}
+    &:hover {
+        color: ${(props) => props.theme.secondaryDarkOrange};
+        svg {
+            path {
+                stroke: ${(props) => props.theme.secondaryDarkOrange};
             }
         }
     }

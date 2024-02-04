@@ -1,52 +1,83 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ChildrenType } from "types";
+import { useQuery } from "react-query";
 
 export const MarvelContent = createContext({} as any);
 
 export default function MarvelProvider({ children }: ChildrenType) {
+    const [searchAgent, setSearchAgent] = useState<string>("");
     const [perfilSelected, setPerfilSelected] = useState<any>("");
-    async function GetSelectAgentMarvel() {
-        try {
-            const publicKey = process.env.REACT_APP_PUBLIC_KEY!;
-            const privateKey = process.env.REACT_APP_PRIVATE_KEY!;
-            const offset = 1;
-            const limit = 7;
-            const response = await fetch(
-                `https://gateway.marvel.com:443/v1/public/characters?offset=${offset}&limit=${limit}&apikey=${publicKey}`
-            );
-            const { data } = await response.json();
+    const [offset, setOffSet] = useState<number>(0);
+    const [limit] = useState<number>(10);
+    const [enable, setEnable] = useState<boolean>(false);
+    const publicKey = process.env.REACT_APP_PUBLIC_KEY!;
+    const baseUrl = process.env.REACT_APP_BASE_URL!;
 
-            console.log(data);
-            return data;
-        } catch (error) {
-            console.log(error);
+    const [currentPage, setCurrentPage] = useState<number>(0);
+
+    useEffect(() => {
+        const calculate = currentPage * limit;
+        console.log("currentPage", currentPage);
+
+        setOffSet(() => calculate);
+        refetchListMarvel();
+    }, [currentPage]);
+
+    const handlePageClick = (data: any) => {
+        const selectedPage = data.selected;
+        console.log("aqui");
+        setCurrentPage(selectedPage);
+    };
+
+    const calculateNextPage = () => {
+        const nextPage = currentPage + 1;
+        if (nextPage < limit) {
+            setCurrentPage(nextPage);
         }
-    }
-    async function GetPerfilAgentMarvel() {
-        try {
-            const publicKey = process.env.REACT_APP_PUBLIC_KEY!;
-            const privateKey = process.env.REACT_APP_PRIVATE_KEY!;
-            const offset = 1;
-            const limit = 10;
-            const response = await fetch(
-                `https://gateway.marvel.com:443/v1/public/comics/1009144/characters?apikey=${publicKey}`
-            );
-            const { data } = await response.json();
+    };
 
-            console.log("GetPerfilAgentMarvel", data);
-            return data;
-        } catch (error) {
-            console.log(error);
+    const calculatePrevPage = () => {
+        const prevPage = currentPage - 1;
+        if (prevPage >= 0) {
+            setCurrentPage(prevPage);
         }
-    }
+    };
 
+    const {
+        data: listMarvel,
+        refetch: refetchListMarvel,
+        isFetching: isLoadingListMarvel,
+    } = useQuery(
+        ["listMarvel"],
+        async () => {
+            let url = `${baseUrl}/characters?offset=${offset}&limit=${limit}&apikey=${publicKey}`;
+
+            if (searchAgent) {
+                url += `&nameStartsWith=${searchAgent}`;
+            }
+            const response = await fetch(url);
+            const responseData = await response.json();
+            return responseData.data.results;
+        },
+        {
+            enabled: enable,
+        }
+    );
     return (
         <MarvelContent.Provider
             value={{
-                GetSelectAgentMarvel,
-                GetPerfilAgentMarvel,
+                isLoadingListMarvel,
+                refetchListMarvel,
+                listMarvel,
                 setPerfilSelected,
                 perfilSelected,
+                setEnable,
+                setSearchAgent,
+                setOffSet,
+                limit,
+                handlePageClick,
+                calculateNextPage,
+                calculatePrevPage,
             }}
         >
             {children}

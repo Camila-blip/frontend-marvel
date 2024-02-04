@@ -7,8 +7,8 @@ import { BsCheck2 } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 
 export default function SelectAgent() {
-    const { GetSelectAgentMarvel, setPerfilSelected } =
-        useContext(MarvelContent);
+    const [dataAgents, setDataAgents] = useState<any>([]);
+    const { listMarvel, setPerfilSelected } = useContext(MarvelContent);
     const [selectedOption, setSelectedOption] = useState<any>({
         value: "",
         label: (
@@ -17,20 +17,20 @@ export default function SelectAgent() {
             </S.DefaultValue>
         ),
     });
+
     const handleChange = (selected: any) => {
         setSelectedOption(selected);
     };
-    const [dataAgents, setDataAgents] = useState<any>([]);
+
     useEffect(() => {
-        (async () => {
-            const { results } = await GetSelectAgentMarvel();
-            const defaultOption = {
-                value: "",
-                label: "Selecione um agente",
-            };
+        const defaultOption = {
+            value: "",
+            label: "Selecione um agente",
+        };
+        if (Array.isArray(listMarvel)) {
             setDataAgents([
                 defaultOption,
-                ...results.map((item: any) => ({
+                ...listMarvel.map((item: any) => ({
                     value: item,
                     label: (
                         <S.DivSelect>
@@ -43,8 +43,8 @@ export default function SelectAgent() {
                     ),
                 })),
             ]);
-        })();
-    }, []);
+        }
+    }, [listMarvel]);
 
     const router = useNavigate();
 
