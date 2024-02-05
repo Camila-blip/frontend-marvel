@@ -2,9 +2,6 @@
     "name": "frontend-marvel",
     "version": "0.1.0",
     "private": true,
-    "engines": {
-        "node": "18.17.0"
-    },
     "scripts": {
         "start": "serve -s build",
         "dev": "react-scripts start",
