@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useMarvelQuery } from "hooks/useMarvelQuery";
 import { useStore } from "contexts/Marvel.context";
-import { KEYUTIL, KJUR } from "jsrsasign";
+import { KJUR } from "jsrsasign";
 export default function Login(): ReactElement {
     const router = useNavigate();
     const { setEnable } = useStore();
