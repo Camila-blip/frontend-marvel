@@ -5,6 +5,7 @@ type TabButton = {
 };
 export const Container = styled.div`
     padding: 20px;
+    margin-top: 4em;
 `;
 
 export const Title = styled.div`

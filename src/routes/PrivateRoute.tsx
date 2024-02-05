@@ -9,7 +9,6 @@ export default function PrivateRoute({ children }: any) {
             process.env.REACT_APP_CHAVE_SECRETA!,
             ["HS256"]
         );
-        console.log("aqui isValid", isValid);
         if (isValid) {
             return children;
         }
