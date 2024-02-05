@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import ReactPaginate from "react-paginate";
-
+export const Button = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+`;
 export const Paginate = styled(ReactPaginate)`
     list-style: none;
     display: flex;

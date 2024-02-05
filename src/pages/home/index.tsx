@@ -1,18 +1,18 @@
 import { Header, InputMain, Pagination } from "components";
 import ContentHome from "./ContentHome";
-import { useContext, useState } from "react";
-import { MarvelContent } from "contexts/Marvel.context";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import * as S from "./style";
+import { useMarvelQuery } from "hooks/useMarvelQuery";
+import { useStore } from "contexts/Marvel.context";
+
 export default function Home() {
     const [search, setSearch] = useState("");
-    const {
-        refetchListMarvel,
-        setOffSet,
-        setSearchAgent,
-        listMarvel,
-        isLoadingListMarvel,
-    } = useContext(MarvelContent);
+
+    const { refetchListMarvel, listMarvel, isLoadingListMarvel } =
+        useMarvelQuery();
+
+    const { setSearchAgent } = useStore();
 
     function handleSearch() {
         refetchListMarvel();

@@ -1,14 +1,16 @@
 import { Button, InputMain, MainTitle, Wrapper } from "components";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { MarvelContent } from "contexts/Marvel.context";
+import { useEffect, useState } from "react";
+import { useStore } from "contexts/Marvel.context";
 import { BsCheck2 } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
+import { useMarvelQuery } from "hooks/useMarvelQuery";
 
 export default function SelectAgent() {
     const [dataAgents, setDataAgents] = useState<any>([]);
-    const { listMarvel, setPerfilSelected } = useContext(MarvelContent);
+    const { setPerfilSelected } = useStore();
+    const { listMarvel } = useMarvelQuery();
     const [selectedOption, setSelectedOption] = useState<any>({
         value: "",
         label: (

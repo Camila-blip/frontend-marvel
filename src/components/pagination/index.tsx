@@ -1,23 +1,25 @@
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import * as S from "./style";
-import { useContext, useEffect, useState } from "react";
-import { MarvelContent } from "contexts/Marvel.context";
-import { create } from "zustand";
+import { useEffect } from "react";
+import { useStore } from "contexts/Marvel.context";
+import { useMarvelQuery } from "hooks/useMarvelQuery";
 
 export default function Pagination() {
-    const { limit, setOffSet, refetchListMarvel, currentPage, setCurrentPage } =
-        useContext(MarvelContent);
+    const { limit, setOffSet, offset, currentPage, setCurrentPage } =
+        useStore();
+    const { refetchListMarvel } = useMarvelQuery();
+
     useEffect(() => {
         const calculate = currentPage * limit;
-        console.log("currentPage", currentPage);
-
-        setOffSet(() => calculate);
-        refetchListMarvel();
+        setOffSet(calculate);
     }, [currentPage]);
+
+    useEffect(() => {
+        refetchListMarvel();
+    }, [offset]);
 
     const handlePageClick = (data: any) => {
         const selectedPage = data.selected;
-        console.log("aqui");
         setCurrentPage(selectedPage);
     };
 
@@ -39,15 +41,15 @@ export default function Pagination() {
         <S.Container>
             <S.Paginate
                 previousLabel={
-                    <div onClick={calculatePrevPage}>
+                    <S.Button onClick={calculatePrevPage}>
                         <BsArrowLeft />
                         Anterior
-                    </div>
+                    </S.Button>
                 }
                 nextLabel={
-                    <div onClick={calculateNextPage}>
+                    <S.Button onClick={calculateNextPage}>
                         Próxima <BsArrowRight />
-                    </div>
+                    </S.Button>
                 }
                 breakLabel={"..."}
                 pageCount={10}

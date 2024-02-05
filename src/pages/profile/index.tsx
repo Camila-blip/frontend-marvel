@@ -1,7 +1,7 @@
 import { Header, InfoPanel, Overview } from "components";
 import * as S from "./style";
-import { useContext, useState } from "react";
-import { MarvelContent } from "contexts/Marvel.context";
+import { useState } from "react";
+import { useStore } from "contexts/Marvel.context";
 
 export default function Profile() {
     const [activeTab, setActiveTab] = useState<number>(0);
@@ -10,9 +10,9 @@ export default function Profile() {
         setActiveTab(index);
     };
 
-    const { perfilSelected } = useContext(MarvelContent);
+    const { perfilSelected } = useStore();
 
-    const TabsButton = ["Visão Geral", "Teams", "Powers", "Species", "Authors"];
+    const TabsButton = ["Visão Geral", "Events", "Series", "Stories"];
 
     return (
         <>
@@ -43,7 +43,11 @@ export default function Profile() {
                         extension={perfilSelected?.thumbnail?.extension}
                     />
                 ) : (
-                    <InfoPanel />
+                    <InfoPanel
+                        tabs={TabsButton}
+                        activeTab={activeTab}
+                        perfilSelected={perfilSelected}
+                    />
                 )}
             </S.Container>
         </>

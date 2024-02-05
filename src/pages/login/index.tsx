@@ -1,5 +1,5 @@
 import { Button, InputMain, MainTitle, Wrapper } from "components";
-import { ReactElement, useContext, useState } from "react";
+import { ReactElement, useState } from "react";
 import * as S from "./style";
 import { useForm } from "react-hook-form";
 import { LoginSchema } from "schemas";
@@ -10,11 +10,14 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { LoginAlt, ForgotPassword } from "assets/icons";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { MarvelContent } from "contexts/Marvel.context";
+import { useMarvelQuery } from "hooks/useMarvelQuery";
+import { useStore } from "contexts/Marvel.context";
 
 export default function Login(): ReactElement {
     const router = useNavigate();
-    const { setEnable, refetchListMarvel } = useContext(MarvelContent);
+    const { setEnable } = useStore();
+    const { refetchListMarvel } = useMarvelQuery();
+
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const {
         register,

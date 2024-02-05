@@ -1,18 +1,19 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement } from "react";
 import * as S from "./style";
-import { MarvelContent } from "contexts/Marvel.context";
+import { useStore } from "contexts/Marvel.context";
 import { useNavigate } from "react-router-dom";
 
 type ContentHomeType = {
     listAgent: [];
     isLoading: boolean;
 };
+
 export default function ContentHome({
     listAgent,
     isLoading,
 }: ContentHomeType): ReactElement {
     const route = useNavigate();
-    const { setPerfilSelected } = useContext(MarvelContent);
+    const { setPerfilSelected } = useStore();
     return (
         <S.Container>
             {isLoading ? (
