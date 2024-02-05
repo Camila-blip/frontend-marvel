@@ -20,24 +20,32 @@ export default function MainRoutes(): ReactElement {
                     path="successRecoverPassword"
                     element={<SuccessRecoverPassword />}
                 />
-                <Route path="selectAgent" element={<SelectAgent />} />
+                <Route
+                    path="selectAgent"
+                    element={
+                        <PrivateRoute>
+                            <SelectAgent />
+                        </PrivateRoute>
+                    }
+                />
                 <Route element={<Layout />}>
-                    <Route path="/home" element={<Home />} />
-
-                    <Route path="home" element={<Home />} />
-                    <Route path="profile" element={<Profile />} />
-
-                    {/* <Route
+                    <Route
                         path="/home"
                         element={
                             <PrivateRoute>
                                 <Home />
                             </PrivateRoute>
                         }
-                    /> */}
+                    />
+                    <Route
+                        path="profile"
+                        element={
+                            <PrivateRoute>
+                                <Profile />
+                            </PrivateRoute>
+                        }
+                    />
                 </Route>
-
-                {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
         </Router>
     );

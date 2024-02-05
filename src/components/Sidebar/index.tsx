@@ -8,6 +8,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 export default function Sidebar(): ReactElement {
     const route = useNavigate();
     const location = useLocation();
+    function handleLogout() {
+        localStorage.removeItem("token");
+        route("/login");
+    }
     return (
         <S.Aside>
             <S.Logo>
@@ -26,7 +30,7 @@ export default function Sidebar(): ReactElement {
                     ))}
                 </ul>
             </S.Content>
-            <S.Exit onClick={() => route("/login")}>
+            <S.Exit onClick={handleLogout}>
                 <Exit />
                 <S.Title>Sair</S.Title>
             </S.Exit>

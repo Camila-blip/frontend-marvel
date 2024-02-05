@@ -42,6 +42,7 @@ export const Content = styled.div<WrapperType>`
     }
     @media (max-width: 1100px) {
         max-width: 380px;
+        height: 400px;
     }
 `;
 export const Flex = styled.div`

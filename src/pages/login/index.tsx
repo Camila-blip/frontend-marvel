@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useMarvelQuery } from "hooks/useMarvelQuery";
 import { useStore } from "contexts/Marvel.context";
-
+import { KEYUTIL, KJUR } from "jsrsasign";
 export default function Login(): ReactElement {
     const router = useNavigate();
     const { setEnable } = useStore();
@@ -35,6 +35,14 @@ export default function Login(): ReactElement {
         const passwordCompare = "Pontua@2024";
 
         if (email === emailCompare && password === passwordCompare) {
+            const header = { alg: "HS256", typ: "JWT" };
+            const payload = { usuario: emailCompare };
+            const token = KJUR.jws.JWS.sign("HS256", header, payload, {
+                utf8: process.env.REACT_APP_CHAVE_SECRETA!,
+            });
+
+            localStorage.setItem("token", token);
+
             setEnable(true);
             refetchListMarvel();
             router("/selectAgent");

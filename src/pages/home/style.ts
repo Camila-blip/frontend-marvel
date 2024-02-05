@@ -35,7 +35,6 @@ export const Container = styled.div`
 `;
 
 export const ContentMarvel = styled.div`
-    flex: 1 0 23%;
     background-color: ${(props) => props.theme.ligthGray};
     border-radius: 15px;
     padding: 10px;
@@ -43,6 +42,9 @@ export const ContentMarvel = styled.div`
     gap: 0.8em;
     height: 160px;
     overflow: auto;
+    @media (min-width: 900px) {
+        flex: 1 0 23%;
+    }
     img {
         width: 84px;
         height: 138px;
